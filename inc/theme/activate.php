@@ -2,9 +2,16 @@
 <?php
 // Active Purchase Code
 // Author: NamNT66
+/**
+ * Notice about active theme
+ */
 function check_theme_license_activate(){
+    $is_active_theme = get_option('ftc_active_theme');
+    if($is_active_theme ){
+      return;
+    }
     $theme_details		= wp_get_theme();
-    $activate_page_link	= admin_url( 'admin.php?page=corona-theme' );
+    $activate_page_link	= admin_url( 'admin.php?page=active-theme' );
 
     ?>
     <div class="notice notice-error is-dismissible">
@@ -24,29 +31,25 @@ function check_theme_license_activate(){
 }
 add_action( 'admin_notices', 'check_theme_license_activate', 90);
 
+/**
+ * add sub-menu Active in Appearance
+ */
 function theme_page_menu() {
-    $menu_title = 'Corona';
-    $menu_icon = 'http://localhost/wordpress/wp-content/themes/pressmart/inc/admin/assets/images/menu-icon.png';
-    
-    add_menu_page( $menu_title,
-        $menu_title,
+    add_submenu_page(
+        'themes.php',
+        'Active Theme',
+        'Active Theme',
         'manage_options',
-        'corona-theme',
-        'corona_dashboard_page',$menu_icon,
-        59
-    );
-    add_submenu_page( 'corona-theme',
-        esc_html__( 'Welcome', 'corona' ),
-        esc_html__( 'Welcome', 'corona' ),
-        'manage_options',
-        'corona-theme',
-        'corona_dashboard_page'
+        'active-theme',
+        'ftc_active_dashboard_page'
     );		
 }
 add_action( 'admin_menu', 'theme_page_menu');
-function corona_dashboard_page(){
+
+function ftc_active_dashboard_page(){
     require(get_template_directory() . '/inc/theme/welcome.php');
 }
+
 
 /**
  * check exist purchase code in db

@@ -1,7 +1,7 @@
 /* PressMart theme activation*/
 jQuery( function ( $ ) {
 	"use strict";
-	$('body').on('click', '.corona-activate-btn', function() {
+	$('body').on('click', '.ftc-activate-btn', function() {
 		// alert('tesst');
 		var purchase_code = $(".purchase-code").val();
 		var activate_btn = $(this);
@@ -21,12 +21,17 @@ jQuery( function ( $ ) {
 			success: function (response) {
 				console.log('response=', response);
 				if(response && response.trim() === 'failed'){
-					alert('Sai rồi');
+					alert('Invalid purchase code.');
 					$(this).attr('disabled', 'true');
-				} else if(response && response.trim() === 'success'){
-					window.location.href = '';
+				} 
+				else if(response && response.trim() === 'success'){
+					alert('Theme activation successful!');
+					setTimeout(()=>{
+						window.location.href = '';
+					}, 500);
 				}
 				else{
+					alert('An error occurred from the server side, Please try again!');
 					$(this).removeAttr('disabled');
 				}
 			},

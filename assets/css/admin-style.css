@@ -81,25 +81,34 @@
 }
 .corona-content-body{
 	max-width: 1024px;
-	border: 1px solid #999999;
-	margin: 40px 16px;
-	padding: 20px;
-	background-color: #fff;
+    border: 1px solid #999999;
+    margin: 10px 16px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 3px;
 }
 .corona-box-header{
 	display: flex;
 	border-bottom: 1px solid #999999;
 	padding: 15px 0;
 	align-items: center;
+	justify-content: space-between;
+}
+.corona-button.green {
+    background: #0c9510;
+    color: #fff;
+    max-width: 100px;
+    text-align: center;
+    padding: 9px 8px 11px;
+    border-radius: 5px;
+    line-height: 13px;
+    font-size: 13px;
 }
 .corona-box-header .title{
 	width: 70%;
 	font-size: 20px;
 }
-.corona-box-header .corona-button{
-	width: 30%;
-	text-align: right;
-}
+
 .corona-box-body{
 	margin-top: 20px;
 }
