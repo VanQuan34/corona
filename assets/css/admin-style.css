@@ -86,6 +86,7 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 3px;
+	box-shadow: 0 0 7px 4px #ebebeb;
 }
 .corona-box-header{
 	display: flex;
@@ -124,4 +125,54 @@
 .purchase-code{
 	min-width: 300px;
 	height: 40px;
+}
+.ftc-importer-wrapper {
+    padding: 20px 40px;
+    margin: 15px;
+    background-color: #f9f9f9;
+}
+.note {
+    min-height: 300px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.ftc-importer-wrapper * {
+    font-size: 15px;
+    box-sizing: border-box;
+}
+.note .screen {
+    width: 40%;
+    float: left;
+    padding-top: 35px;
+    text-align: right;
+    border: 1px solid #ebebeb;
+    box-sizing: border-box;
+    text-align: center;
+}
+.ftc-importer-wrapper .heading {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+.ftc-importer-wrapper .logo {
+    display: inline-block;
+    float: right;
+    padding-right: 20px;
+}
+.ftc-importer-wrapper > .note p {
+    padding-left: 50px;
+    margin: 10px 0;
+}
+.note_import {
+    display: inline-block;
+    width: 60%;
+}
+.note .screen h4 {
+    color: #fff;
+    text-transform: capitalize;
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    background-color: #999;
+    padding: 1px 3px;
 }
