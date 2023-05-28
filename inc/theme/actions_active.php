@@ -10,6 +10,10 @@ function active_theme_ftc(){
 		$purchase_code = isset($_POST['purchase_code']) ? ($_POST['purchase_code']): '';
         $number_exist = get_item_id_theme_active($purchase_code);
         $current_theme = wp_get_theme()->get('TextDomain');
+        if (!preg_match("/^([a-f0-9]{8})-(([a-f0-9]{4})-){3}([a-f0-9]{12})$/i", $purchase_code)) {
+            echo 'failed';
+            return;
+        }
         if($number_exist == 0){
             $data_call_api = call_api_check_purchase_code($purchase_code);
             $item_id = $data_call_api['item_id'];
