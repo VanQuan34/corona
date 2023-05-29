@@ -45,25 +45,25 @@ if ($is_theme_active) {
 		</div>
 
 	</div>
-	<div class="corona-content-body">
+	<div class="ftc-content-active">
 		<div class="row">
 			<div class="col-12">
 				<div class="corona-box theme-activate <?php echo esc_attr($theme_activate); ?>">
-					<div class="corona-box-header">
+					<div class="ftc-active-header">
 						<div class="title"> <?php esc_html_e('Purchase Code', 'corona') ?></div>
-						<div class="corona-button<?php echo esc_attr($status_activate_class); ?>"> <?php echo esc_html($status_txt); ?></div>
+						<div class="ftc-corona-button<?php echo esc_attr($status_activate_class); ?>"> <?php echo esc_html($status_txt); ?></div>
 					</div>
-					<div class="corona-box-body">
+					<div class="ftc-active-body">
 						<form action="" method="post">
 							<?php if ($is_theme_active) { ?>
-								<input name="purchase-code" class="purchase-code" type="text" placeholder="<?php esc_attr_e('Purchase code', 'corona'); ?>" value="<?php echo esc_attr($purchase_code); ?>" readonly="true">
+								<input name="purchase-code" class="ftc-purchase-code" type="text" placeholder="<?php esc_attr_e('Purchase code', 'corona'); ?>" value="<?php echo esc_attr($purchase_code); ?>" readonly="true">
 							<?php } else { ?>
-								<input name="purchase-code" class="purchase-code" type="text" placeholder="<?php esc_attr_e('Purchase code', 'corona'); ?>">
+								<input name="purchase-code" class="ftc-purchase-code" type="text" placeholder="<?php esc_attr_e('Purchase code', 'corona'); ?>">
 							<?php } ?>
-							<button type="button" id="corona-activate-theme" class="button action <?php echo esc_attr($active_button_class); ?>" <?php echo $is_theme_active ? 'disabled' : '' ?>><?php echo esc_html($active_button_txt); ?></button>
+							<button type="button" id="ftc-activate-theme" class="button action <?php echo esc_attr($active_button_class); ?>" <?php echo $is_theme_active ? 'disabled' : '' ?>><?php echo esc_html($active_button_txt); ?></button>
 
 						</form>
-						<div class="purchase-desc">
+						<div class="ftc-purchase-desc">
 							<?php echo wp_kses(sprintf(__('You can learn how to find your purchase key <a href="%s" target="_blank"> here </a>', 'corona'), 'https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code'), 'corona'); ?>
 						</div>
 					</div>

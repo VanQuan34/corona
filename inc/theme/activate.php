@@ -175,7 +175,7 @@ function get_item_id_of_purchase_code($purchase_code){
  * call api return data purchase
  */
 function call_api_check_purchase_code($purchase_code){
-  $url = 'http://localhost/verify-envato-purchase-code-main/verification_details.php?purchase_code='.$purchase_code;
+  $url = 'https://dev.themeftc.com/active/verification_details.php?purchase_code='.$purchase_code;
 	$response = wp_remote_get($url);
 	$body = json_decode($response['body']);
 	return $data = array(
@@ -188,35 +188,5 @@ function call_api_check_purchase_code($purchase_code){
      'message' => $body->message
   );
 }
-add_action( 'rest_api_init', function() {
-  if(strpos($_SERVER['REQUEST_URI'], '/wp-json/theme_active/') !== false){
-    $host = 'https://dev.themeftc.com/active';
-    $api = $host.'/wp-json/wp/v2/posts';
-    $login = 'admin';
-    $password = 'EMOC OEoA mus7 4WsD hZtz 0BWA';
-    register_rest_route( 'theme_active/v1', 'get_service', array(
-    'methods' => 'POST',
-    'callback' => function(){
-        $body = json_encode([
-        'purchase_code' => isset($_POST['purchase_code']) ? $_POST['purchase_code'] : '',
-        ]);
-        $response = wp_remote_post( $api, [
-          'headers' => array(
-              'Authorization' => 'Basic ' . base64_encode( "$login:$password" )
-            ),
-          'body' => $body
-        ]);
-        $data = [];
-        if(!is_wp_error($response) && $response['response']['code'] === 200){
-        $data = [json_decode( $response['body'] ?? "", TRUE )];
-        }
-        return [
-        'data' => $data,
-        'status_code' => $response['response']['code']
-        ];
-      }
-    ));
-  }
-});
 
 ?>

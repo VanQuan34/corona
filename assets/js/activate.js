@@ -3,7 +3,7 @@ jQuery( function ( $ ) {
 	"use strict";
 	$('body').on('click', '.ftc-activate-btn', function() {
 		// alert('tesst');
-		var purchase_code = $(".purchase-code").val();
+		var purchase_code = $(".ftc-purchase-code").val();
 		var activate_btn = $(this);
 		activate_btn.addClass('loading');
 		if( $.trim(purchase_code) != ''){
