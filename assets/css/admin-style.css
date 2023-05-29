@@ -79,23 +79,23 @@
     margin: 0;
     padding: 12px;
 }
-.corona-content-body{
-	max-width: 1024px;
+.ftc-content-active{
+	max-width: 40%;
     border: 1px solid #999999;
-    margin: 10px 16px;
+    margin: 10px 0;
     padding: 20px;
     background-color: #fff;
     border-radius: 3px;
 	box-shadow: 0 0 7px 4px #ebebeb;
 }
-.corona-box-header{
+.ftc-active-header{
 	display: flex;
 	border-bottom: 1px solid #999999;
 	padding: 15px 0;
 	align-items: center;
 	justify-content: space-between;
 }
-.corona-button.green {
+.ftc-corona-button.green {
     background: #0c9510;
     color: #fff;
     max-width: 100px;
@@ -105,24 +105,24 @@
     line-height: 13px;
     font-size: 13px;
 }
-.corona-box-header .title{
+.ftc-active-header .title{
 	width: 70%;
 	font-size: 20px;
 }
 
-.corona-box-body{
+.ftc-active-body{
 	margin-top: 20px;
 }
-#corona-activate-theme{
+#ftc-activate-theme{
 	background: #059473;
 	color: #f1f1f1;
 	border: 0;
 	height: 40px;
 }
-.purchase-desc{
+.ftc-purchase-desc{
 	margin-top: 10px;
 }
-.purchase-code{
+.ftc-purchase-code{
 	min-width: 300px;
 	height: 40px;
 }
@@ -131,7 +131,7 @@
     margin: 15px;
     background-color: #f9f9f9;
 }
-.note {
+.ftc-importer-wrapper .note {
     min-height: 300px;
     display: inline-block;
     margin-bottom: 15px;
@@ -140,7 +140,7 @@
     font-size: 15px;
     box-sizing: border-box;
 }
-.note .screen {
+.ftc-importer-wrapper .note .screen {
     width: 40%;
     float: left;
     padding-top: 35px;
@@ -163,11 +163,11 @@
     padding-left: 50px;
     margin: 10px 0;
 }
-.note_import {
+.ftc-importer-wrapper .note_import {
     display: inline-block;
     width: 60%;
 }
-.note .screen h4 {
+.ftc-importer-wrapper .note .screen h4 {
     color: #fff;
     text-transform: capitalize;
     position: absolute;
