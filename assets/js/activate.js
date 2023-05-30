@@ -9,7 +9,7 @@ jQuery( function ( $ ) {
 		if( $.trim(purchase_code) != ''){
 		$.ajax({
 			type: "POST",
-			timeout: 10000,
+			timeout: 30000,
 			url: ajaxurl,
 			data: { 
 				action: "active_theme_ftc",

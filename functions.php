@@ -1847,27 +1847,4 @@ function ftc_register_required_plugins()
     tgmpa($plugins, $config);
 }
 
-// function scratchcode_create_payment_table() {
- 
-    // global $wpdb;
- 
-    // $table_name = $wpdb->prefix . "actived_theme";
- 
-    // $charset_collate = $wpdb->get_charset_collate();
- 
-    // $sql = "CREATE TABLE $table_name (
-    //   id bigint(20) NOT NULL AUTO_INCREMENT,
-    //   item_id bigint(20) NOT NULL
-    //   purchase_code varchar(255) NOT NULL,
-    //   created_at datetime NOT NULL,
-    //   expires_at datetime NOT NULL,
-    //   PRIMARY KEY id (id)
-    // ) $charset_collate;";
- 
-    // require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    // dbDelta($sql);
-// }    
- 
-// add_action('init', 'scratchcode_create_payment_table');
-
 ?>

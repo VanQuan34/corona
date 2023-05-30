@@ -27,10 +27,10 @@ function active_theme_ftc(){
             $is_exist = check_exist_buyer_and_purchase_code($purchase_code);
             // domain current === old domain active
             $path_plugin = get_path_plugin_saved($purchase_code);
-            $current_theme = wp_get_theme()->get('TextDomain');
-            if($is_exist){
+            $theme_save = get_history_theme_activate($purchase_code);
+            if($is_exist && ($current_theme == $theme_save)){
                 ftc_update_value_action_active($path_plugin, $purchase_code);
-                echo 'success'; 
+                echo 'success'. $theme_save; 
             }
             else{
                 echo 'failed';
@@ -57,26 +57,16 @@ function check_item_id_theme($data_call_api, $purchase_code, $theme, $buyer, $it
 }
 
 function ftc_update_value_action_active($path_plugin, $purchase_code){
-    update_option('ftc_active_theme', true);
-    update_option('ftc_purchase_code', $purchase_code);
-    update_option('ftc_path_install_plugin', $path_plugin);
+    update_option('corona_active_theme', true);
+    update_option('corona_purchase_code', $purchase_code);
+    update_option('corona_path_install_plugin', $path_plugin);
 }
 
-/**
- * add column path plugin save
- */
-require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-$row = $wpdb->get_results(  "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS 
-WHERE table_name = 'wp_posts' AND column_name = 'path_plugin'"  );  
-  
-if(empty($row)){  
-   $wpdb->query("ALTER TABLE wp_posts ADD path_plugin VARCHAR(255) NOT NULL DEFAULT ''");  
-}
 
 add_action('tgmpa_register', 'ftc_register_required_plugins_active');
 function ftc_register_required_plugins_active(){
-    $is_active_theme =  get_option('ftc_active_theme');
-    $plugin_dir_path = get_option('ftc_path_install_plugin');
+    $is_active_theme =  get_option('corona_active_theme');
+    $plugin_dir_path = get_option('corona_path_install_plugin');
     $ver = wp_get_theme(); 
     $version = $ver->get('Version');
     if(!$is_active_theme){
@@ -87,7 +77,7 @@ function ftc_register_required_plugins_active(){
         array(
             'name' => 'ThemeFTC', // The plugin name.
             'slug' => 'themeftc', // The plugin slug (typically the folder name).
-            'source' => $plugin_dir_path . 'themeftc.zip', // The plugin source.
+            'source' => $plugin_dir_path . '/corona/themeftc.zip', // The plugin source.
             'required' => true, // If false, the plugin is only 'recommended' instead of required.
             'version' => '1.1.2', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
@@ -97,7 +87,7 @@ function ftc_register_required_plugins_active(){
         ,array(
             'name' => 'ThemeFTC Elementor', // The plugin name.
             'slug' => 'themeftc-for-elementor', // The plugin slug (typically the folder name).
-            'source' => $plugin_dir_path . 'themeftc-for-elementor.zip', // The plugin source.
+            'source' => $plugin_dir_path . '/corona/themeftc-for-elementor.zip', // The plugin source.
             'required' => true, // If false, the plugin is only 'recommended' instead of required.
             'version' => '1.0.4', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
@@ -107,7 +97,7 @@ function ftc_register_required_plugins_active(){
         ,array(
             'name' => 'ThemeFTC GET', // The plugin name.
             'slug' => 'themeftc-get', // The plugin slug (typically the folder name).
-            'source' => $plugin_dir_path . 'themeftc-get.zip', // The plugin source.
+            'source' => $plugin_dir_path . '/corona/themeftc-get.zip', // The plugin source.
             'required' => true, // If false, the plugin is only 'recommended' instead of required.
             'version' => '1.0.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
@@ -117,7 +107,7 @@ function ftc_register_required_plugins_active(){
         ,array(
             'name' => 'FTC Importer', // The plugin name.
             'slug'  => 'ftc_importer', // The plugin slug (typically the folder name).
-            'source'  => $plugin_dir_path.'/content/ftc-importer-corona-'.$version .'.zip', 
+            'source'  => $plugin_dir_path.'/corona/content/ftc-importer-corona-'.$version .'.zip', 
             'required'  => true, // If false, the plugin is only 'recommended' instead of required.
             'version'  => '1.2.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'  => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.

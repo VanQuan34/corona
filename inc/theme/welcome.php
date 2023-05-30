@@ -1,5 +1,5 @@
 <?php
-$is_theme_active 		= get_option('ftc_active_theme');
+$is_theme_active 		= get_option('corona_active_theme');
 $active_button_txt 		= esc_html__('Activate Theme', 'corona');
 $active_button_class 	= 'ftc-activate-btn';
 $input_attr 			= '';
@@ -9,7 +9,7 @@ $purchase_code 			= '';
 $readonly 				= 'false';
 $status_activate_class 	= ' red';
 if ($is_theme_active) {
-	$purchase_code 			= get_option('ftc_purchase_code');
+	$purchase_code 			= get_option('corona_purchase_code');
 	$active_button_txt 		= esc_html__('Activate Theme', 'corona');
 	$active_button_class 	= 'corona-deactivate-btn';
 	$input_attr 			= ' value="' . $purchase_code . '" readonly="true"';

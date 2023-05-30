@@ -6,7 +6,7 @@
  * Notice about active theme
  */
 function check_theme_license_activate(){
-    $is_active_theme = get_option('ftc_active_theme');
+    $is_active_theme = get_option('corona_active_theme');
     if($is_active_theme ){
       return;
     }
@@ -56,7 +56,7 @@ function ftc_active_dashboard_page(){
  */
 function get_item_id_theme_active($code)
 {
-	$host = 'https://dev.themeftc.com/active';
+	$host = 'https://demo.themeftc.com/active';
 	$url = $host.'/wp-json/wp/v2/posts/?search='.$code;
 	$response = wp_remote_get($url);
  
@@ -75,7 +75,7 @@ function get_item_id_theme_active($code)
  * get old current domain actived
  */
 function get_current_domain_activate($code){
-  $host = 'https://dev.themeftc.com/active';
+  $host = 'https://demo.themeftc.com/active';
 	$url = $host.'/wp-json/wp/v2/posts/?search='.$code;
 	$response = wp_remote_get($url);
  
@@ -91,8 +91,8 @@ function get_current_domain_activate($code){
 	}
 }
 
-function get_path_plugin_saved($code){
-  $host = 'https://dev.themeftc.com/active';
+function get_history_theme_activate($code){
+  $host = 'https://demo.themeftc.com/active';
 	$url = $host.'/wp-json/wp/v2/posts/?search='.$code;
 	$response = wp_remote_get($url);
  
@@ -103,7 +103,24 @@ function get_path_plugin_saved($code){
 		$response = wp_remote_get($url);
     $body = json_decode($response['body']);
     foreach($body as $post) {
-      return wp_strip_all_tags($post->path_plugin);
+      return wp_strip_all_tags($post->slug);
+    }
+	}
+}
+
+function get_path_plugin_saved($code){
+  $host = 'https://demo.themeftc.com/active';
+	$url = $host.'/wp-json/wp/v2/posts/?search='.$code;
+	$response = wp_remote_get($url);
+ 
+	if (is_wp_error($response)) {
+		$error_message = $response->get_error_message();
+		return "Something went wrong: $error_message";
+	} else {
+		$response = wp_remote_get($url);
+    $body = json_decode($response['body']);
+    foreach($body as $post) {
+      return wp_strip_all_tags($post->template);
     }
 	}
 }
@@ -115,10 +132,11 @@ function save_item_id_theme_active($code, $buyer, $item_id, $name, $path_plugin)
 {
 $login = 'admin';
 // password aplication site save
-$password = 'EMOC OEoA mus7 4WsD hZtz 0BWA';
-$host = 'https://dev.themeftc.com/active';
+$password = 'FfcI QGrH 3fic n4KI mAju Xi3Z';
+$host = 'https://demo.themeftc.com/active';
 $api = $host.'/wp-json/wp/v2/posts';
 $site_url_active = get_site_url();
+$current_theme = wp_get_theme()->get('TextDomain');
 $request = wp_remote_post( $api,
 		array(
 			'headers' => array(
@@ -132,7 +150,8 @@ $request = wp_remote_post( $api,
 				'categories' => 3,
 				'status' => 'publish',
         'mime_type' => $name,
-        'path_plugin' => $path_plugin
+        'template' => $path_plugin,
+        'slug' => $current_theme
 				
 			)
 		)
@@ -155,7 +174,7 @@ function check_exist_buyer_and_purchase_code($purchase_code){
  * get item_id if correct purchase code
  */
 function get_item_id_of_purchase_code($purchase_code){
-  $host = 'https://dev.themeftc.com/active';
+  $host = 'https://demo.themeftc.com/active';
 	$url = $host.'/wp-json/wp/v2/posts/?search='.$purchase_code;
 	$response = wp_remote_get($url);
  
@@ -175,7 +194,7 @@ function get_item_id_of_purchase_code($purchase_code){
  * call api return data purchase
  */
 function call_api_check_purchase_code($purchase_code){
-  $url = 'https://dev.themeftc.com/active/verification_details.php?purchase_code='.$purchase_code;
+  $url = 'https://demo.themeftc.com/active/verification_details.php?purchase_code='.$purchase_code;
 	$response = wp_remote_get($url);
 	$body = json_decode($response['body']);
 	return $data = array(
