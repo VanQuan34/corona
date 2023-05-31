@@ -11,19 +11,20 @@ function check_theme_license_activate(){
       return;
     }
     $theme_details		= wp_get_theme();
+    $current_theme    = wp_get_theme()->get('TextDomain');
     $activate_page_link	= admin_url( 'admin.php?page=active-theme' );
 
     ?>
     <div class="notice notice-error is-dismissible">
         <p>
             <?php 
-                echo sprintf( esc_html__( ' %1$s Theme is not activated! Please activate your theme and enjoy all features of the %2$s theme', 'corona'), 'Corona','Corona' );
+                echo sprintf( esc_html__( ' %1$s Theme is not activated! Please activate your theme and enjoy all features of the %2$s theme', $current_theme), ucfirst($current_theme), ucfirst($current_theme) );
                 ?>
         </p>
         <p>
-            <strong style="color:red"><?php esc_html_e( 'Please activate the theme!', 'corona' ); ?></strong> -
+            <strong style="color:red"><?php esc_html_e( 'Please activate the theme!', $current_theme ); ?></strong> -
             <a href="<?php echo esc_url(( $activate_page_link )); ?>">
-                <?php esc_html_e( 'Activate Now','pressmart' ); ?> 
+                <?php esc_html_e( 'Activate Now', $current_theme ); ?> 
             </a> 
         </p>
     </div>

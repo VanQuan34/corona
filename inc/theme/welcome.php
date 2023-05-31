@@ -1,21 +1,22 @@
 <?php
+$current_theme    		= wp_get_theme()->get('TextDomain');
 $is_theme_active 		= get_option('corona_active_theme');
-$active_button_txt 		= esc_html__('Activate Theme', 'corona');
+$active_button_txt 		= esc_html__('Activate Theme', $current_theme);
 $active_button_class 	= 'ftc-activate-btn';
 $input_attr 			= '';
 $theme_activate 		= 'theme-deactivated';
-$status_txt 			= esc_html__('No Activated', 'corona');
+$status_txt 			= esc_html__('No Activated', $current_theme);
 $purchase_code 			= '';
 $readonly 				= 'false';
 $status_activate_class 	= ' red';
 if ($is_theme_active) {
 	$purchase_code 			= get_option('corona_purchase_code');
-	$active_button_txt 		= esc_html__('Activate Theme', 'corona');
+	$active_button_txt 		= esc_html__('Activate Theme', $current_theme);
 	$active_button_class 	= 'corona-deactivate-btn';
 	$input_attr 			= ' value="' . $purchase_code . '" readonly="true"';
 	$readonly				= 'true';
 	$theme_activate 		= 'theme-activated';
-	$status_txt 			= esc_html__('Activated', 'corona');
+	$status_txt 			= esc_html__('Activated', $current_theme);
 	$status_activate_class 	= ' green';
 }
 
@@ -48,23 +49,23 @@ if ($is_theme_active) {
 	<div class="ftc-content-active">
 		<div class="row">
 			<div class="col-12">
-				<div class="corona-box theme-activate <?php echo esc_attr($theme_activate); ?>">
+				<div class="active-box theme-activate <?php echo esc_attr($theme_activate); ?>">
 					<div class="ftc-active-header">
-						<div class="title"> <?php esc_html_e('Purchase Code', 'corona') ?></div>
-						<div class="ftc-corona-button<?php echo esc_attr($status_activate_class); ?>"> <?php echo esc_html($status_txt); ?></div>
+						<div class="title"> <?php esc_html_e('Purchase Code', $current_theme) ?></div>
+						<div class="ftc-active-button<?php echo esc_attr($status_activate_class); ?>"> <?php echo esc_html($status_txt); ?></div>
 					</div>
 					<div class="ftc-active-body">
 						<form action="" method="post">
 							<?php if ($is_theme_active) { ?>
-								<input name="purchase-code" class="ftc-purchase-code" type="text" placeholder="<?php esc_attr_e('Purchase code', 'corona'); ?>" value="<?php echo esc_attr($purchase_code); ?>" readonly="true">
+								<input name="purchase-code" class="ftc-purchase-code" type="text" placeholder="<?php esc_attr_e('Purchase code', $current_theme); ?>" value="<?php echo esc_attr($purchase_code); ?>" readonly="true">
 							<?php } else { ?>
-								<input name="purchase-code" class="ftc-purchase-code" type="text" placeholder="<?php esc_attr_e('Purchase code', 'corona'); ?>">
+								<input name="purchase-code" class="ftc-purchase-code" type="text" placeholder="<?php esc_attr_e('Purchase code', $current_theme); ?>">
 							<?php } ?>
 							<button type="button" id="ftc-activate-theme" class="button action <?php echo esc_attr($active_button_class); ?>" <?php echo $is_theme_active ? 'disabled' : '' ?>><?php echo esc_html($active_button_txt); ?></button>
 
 						</form>
 						<div class="ftc-purchase-desc">
-							<?php echo wp_kses(sprintf(__('You can learn how to find your purchase key <a href="%s" target="_blank"> here </a>', 'corona'), 'https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code'), 'corona'); ?>
+							<?php echo wp_kses(sprintf(__('You can learn how to find your purchase key <a href="%s" target="_blank"> here </a>', $current_theme), 'https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code'), $current_theme); ?>
 						</div>
 					</div>
 				</div>

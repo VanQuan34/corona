@@ -993,6 +993,7 @@ add_action('wp_enqueue_scripts', 'ftc_register_custom_css', 9999);
 /*** Register Back End Scripts ***/
 function ftc_register_admin_scripts()
 {
+   wp_enqueue_style('pe-icon-7-stroke', get_template_directory_uri() . '/assets/css/pe-icon-7-stroke.css');
    wp_register_style('ftc-admin-style', get_template_directory_uri() . '/assets/css/admin-style.css');
    wp_enqueue_style('ftc-admin-style');
    wp_register_style('ftc-theme-options', get_template_directory_uri() . '/admin/css/options.css');

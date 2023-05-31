@@ -5,6 +5,7 @@ jQuery( function ( $ ) {
 		// alert('tesst');
 		var purchase_code = $(".ftc-purchase-code").val();
 		var activate_btn = $(this);
+		activate_btn.attr('disabled', 'true');
 		activate_btn.addClass('loading');
 		if( $.trim(purchase_code) != ''){
 		$.ajax({
@@ -19,10 +20,11 @@ jQuery( function ( $ ) {
 				console.log('err=', err)
 			},
 			success: function (response) {
+				activate_btn.removeClass('loading');
 				console.log('response=', response);
 				if(response && response.trim() === 'failed'){
 					alert('Invalid purchase code.');
-					$(this).attr('disabled', 'true');
+					activate_btn.removeAttr('disabled');
 				} 
 				else if(response && response.trim() === 'success'){
 					alert('Theme activation successful!');
@@ -32,12 +34,13 @@ jQuery( function ( $ ) {
 				}
 				else{
 					alert('An error occurred from the server side, Please try again!');
-					$(this).removeAttr('disabled');
+					activate_btn.removeAttr('disabled');
 				}
 			},
 		  });
 	} else {
 	alert('Please Enter Purchase Code');
+	activate_btn.removeAttr('disabled');
 	}
 	
 	return false;

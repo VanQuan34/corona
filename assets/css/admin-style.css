@@ -85,7 +85,7 @@
     margin: 10px 0;
     padding: 20px;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 5px;
 	box-shadow: 0 0 7px 4px #ebebeb;
 }
 .ftc-active-header{
@@ -95,7 +95,7 @@
 	align-items: center;
 	justify-content: space-between;
 }
-.ftc-corona-button.green {
+.ftc-active-button.green {
     background: #0c9510;
     color: #fff;
     max-width: 100px;
@@ -176,3 +176,29 @@
     background-color: #999;
     padding: 1px 3px;
 }
+.active-box .ftc-activate-btn{
+    position: absolute;
+    margin-left: 5px;
+    width: 120px;
+}
+.active-box .ftc-activate-btn.loading{
+    font-size: 0;
+}
+.ftc-activate-btn.loading:after{
+    content: "\e6c4";
+    font-family: 'Pe-icon-7-stroke';
+    position: absolute;
+    left: 46%;
+    top: 4px;
+    transform: translateX(-50%);
+    font-size: 17px;
+    animation: app-logo-spin infinite 5s linear;
+}
+@keyframes app-logo-spin {
+    from {
+      transform: rotate(0deg)
+    }
+    to {
+      transform: rotate(360deg)
+    }
+  }
